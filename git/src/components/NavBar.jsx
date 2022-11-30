@@ -26,13 +26,13 @@ export default function NavBar({ user }) {
               : (
                 <>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Избранное</a>
+                    <a className="nav-link active" aria-current="page" href="#!">Избранное</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Корзина</a>
+                    <a className="nav-link active" aria-current="page" href="#!">Корзина</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Генератор носков</a>
+                    <a className="nav-link active" aria-current="page" href="#!">Генератор носков</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>

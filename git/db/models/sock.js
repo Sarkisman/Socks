@@ -1,14 +1,13 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Sock extends Model {
-
     static associate(models) {
       this.belongsTo(models.User, {
-        foreignKey: "userId",
-      })
+        foreignKey: 'userId',
+      });
     }
   }
   Sock.init({
@@ -17,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     img: DataTypes.STRING,
     favorSt: DataTypes.BOOLEAN,
     bascetSt: DataTypes.BOOLEAN,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Sock',
