@@ -5,7 +5,6 @@ export default function Registration() {
   const [input, setInput] = useState({});
 
   const submitHandler = async (e) => {
-    console.log(input);
     e.preventDefault();
     const response = await fetch('/auth/reg', {
       method: 'POST',
