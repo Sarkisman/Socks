@@ -34,7 +34,7 @@ export default function NavBar({ user }) {
                   <li className="nav-item">
                     <h4>
                       {' '}
-                      <a className="nav-link active" aria-current="page" href="#!">Корзина</a>
+                      <a className="nav-link active" aria-current="page" href="/basket">Корзина</a>
                     </h4>
                   </li>
                   <li className="nav-item">
