@@ -3,7 +3,7 @@ import React from 'react';
 export default function NavBar({ user }) {
   return (
 
-    <nav className="navbar navbar-expand-lg bg-danger" style={{ borderRadius: 12, marginTop: '7px' }}>
+    <nav className="navbar navbar-expand-lg bg-secondary" style={{ borderRadius: 12, marginTop: '7px' }}>
       <div className="container-fluid ">
         <a className="navbar-brand" href="/">
           <img src="/image/лого.png" alt="" width="30" height="35" />
@@ -16,26 +16,38 @@ export default function NavBar({ user }) {
             {!user ? (
               <>
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/auth/login">Авторизация</a>
+                  <h4><a className="nav-link active" aria-current="page" href="/auth/login">Авторизация</a></h4>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/auth/reg">Регистрация</a>
+                  <h4><a className="nav-link active" aria-current="page" href="/auth/reg">Регистрация</a></h4>
                 </li>
               </>
             )
               : (
                 <>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#!">Избранное</a>
+                    <h4>
+                      {' '}
+                      <a className="nav-link active" aria-current="page" href="#!">Избранное</a>
+                    </h4>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/basket">Корзина</a>
+                    <h4>
+                      {' '}
+                      <a className="nav-link active" aria-current="page" href="#!">Корзина</a>
+                    </h4>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/sockgen">Генератор носков</a>
+                    <h4>
+                      {' '}
+                      <a className="nav-link active" aria-current="page" href="#!">Генератор носков</a>
+                    </h4>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>
+                    <h4>
+                      {' '}
+                      <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>
+                    </h4>
                   </li>
 
                 </>
