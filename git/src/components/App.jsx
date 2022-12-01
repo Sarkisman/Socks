@@ -14,7 +14,7 @@ export default function App({ user, socks }) {
     <div className="container">
       <NavBar user={user} />
       <Routes>
-        <Route path="/favourites" element={<Favourites  socks={socks} />} />
+        <Route path="/favourites" element={<Favourites socks={socks} />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/reg" element={<Reg />} />
