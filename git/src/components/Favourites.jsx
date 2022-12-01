@@ -14,7 +14,7 @@ export default function Favourites() {
       setUserSocs([...userSocs.filter((el) => el.id !== id)]);
     }
   };
-  
+
   const basketHandler = async (id) => {
     console.log(userSocs);
     const res = await fetch(`/basket/${id}`, { method: 'DELETE' });
@@ -24,7 +24,7 @@ export default function Favourites() {
     }
   };
   return (
-    <div className="d-flex justify-content-center flex-wrap">
+    <div style={{ height: '100%' }} className="d-flex justify-content-center flex-wrap">
       <div className="mt-2 d-flex justify-content-between flex-wrap">
         {userSocs?.map((el) => (
           <div key={el.id} className="card border-0 m-1">

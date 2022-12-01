@@ -60,7 +60,7 @@ export default function SockForm({ user }) {
   return (
     <div
       style={{
-        position: 'relative', height: '100%', display: 'flex', flexWrap: 'wrap', zIndex: '100',
+        height: '100%', zIndex: '100',
       }}
       className="container"
     >
@@ -69,15 +69,16 @@ export default function SockForm({ user }) {
       <div style={{ width: '100%', height: '2px', backgroundColor: 'black' }} />
       <br />
       <div>
-        <Sock inputs={inputs} style={{ display: 'block' }} />
+        <Sock inputs={inputs} style={{ display: 'block', marginRight: '10px' }} />
       </div>
       <form
         onSubmit={submitHandler}
         method="POST"
         action="/postsock"
         style={{
+          position: 'absolute',
           width: '60vw',
-          transform: 'translateX(5vw)',
+          transform: 'translateX(40%) translateY(-90%)',
           display: 'block',
         }}
       >

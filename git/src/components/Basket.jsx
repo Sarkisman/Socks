@@ -34,7 +34,7 @@ export default function Basket() {
   };
   return (
     <>
-      <div className="d-flex justify-content-center flex-wrap">
+      <div style={{ height: '100%' }} className="d-flex justify-content-center flex-wrap flex-row">
         <div className="mt-2 d-flex flex-wrap">
           {userSocs?.map((el) => el.bascetSt && (el.favorSt === false ? (
             <div className="card border-0 m-1">
