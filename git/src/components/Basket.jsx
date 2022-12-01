@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Sock from './Sock';
 
-export default function Basket({ user }) {
+export default function Basket({ user, newUserSocks }) {
   const [userSocs, setUserSocs] = useState([]);
+  const [string, setString] = useState('');
   useEffect(() => {
     fetch('/basket/bas')
       .then((data) => data.json())
@@ -30,7 +31,8 @@ export default function Basket({ user }) {
     fetch(`/basket/order/${user.id}`, {
       method: 'POST',
     })
-      .then(() => setUserSocs([]));
+      .then(() => setUserSocs([]))
+      .then(() => setString(`Ваш заказ добавлен в очередь. На вашу почту ${user.email} отправлено письмо с деталями заказа.`));
   };
   return (
     <>
@@ -49,6 +51,9 @@ export default function Basket({ user }) {
       </div>
       <div className="d-flex justify-content-center flex-wrap">
         <button type="button" className="constructor-button m-1" onClick={orderHandler}>Заказать</button>
+      </div>
+      <div className="d-flex justify-content-center flex-wrap">
+        {string}
       </div>
     </>
   );
