@@ -23,7 +23,12 @@ export default function login() {
   };
 
   return (
-    <div className="container" style={{ width: 400, margin: 'auto', color: 'white' }}>
+    <div
+      className="container"
+      style={{
+        width: 400, margin: 'auto', color: 'white', height: '100%',
+      }}
+    >
       <form onSubmit={submitHandler}>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className="field">

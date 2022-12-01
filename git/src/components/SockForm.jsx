@@ -27,7 +27,7 @@ export default function SockForm({ user }) {
 //     grey: '#afafaf',
 //   };
 
-  const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: 'none' });
+  const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: '' });
 
   const changeHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -58,12 +58,18 @@ export default function SockForm({ user }) {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <h1 style={{ marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
+    <div
+      style={{
+        position: 'relative', height: '100%', display: 'flex', flexWrap: 'wrap', zIndex: '100',
+      }}
+      className="container"
+    >
+      <h1 style={{ marginTop: '20px', marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
       <hr />
+      <div style={{ width: '100%', height: '2px', backgroundColor: 'black' }} />
       <br />
       <div>
-        <Sock inputs={inputs} />
+        <Sock inputs={inputs} style={{ display: 'block' }} />
       </div>
       <form
         onSubmit={submitHandler}
@@ -71,7 +77,8 @@ export default function SockForm({ user }) {
         action="/postsock"
         style={{
           width: '60vw',
-          transform: 'translateX(400px) translateY(-390px)',
+          transform: 'translateX(5vw)',
+          display: 'block',
         }}
       >
         <h2 style={{ margin: '0 auto', transform: 'translateX(70px)' }}>выберите цвет ваших носков</h2>
@@ -129,7 +136,7 @@ export default function SockForm({ user }) {
             <label htmlFor="radio-11">треугольники</label>
           </div>
           <div className="form_radio_group-item">
-            <input onChange={changeHandler} id="radio-12" type="radio" name="pattern" value="none" />
+            <input onChange={changeHandler} id="radio-12" type="radio" name="pattern" value="" />
             <label htmlFor="radio-12">без узора</label>
           </div>
         </div>
@@ -143,7 +150,7 @@ export default function SockForm({ user }) {
               id="radio-13"
               type="radio"
               name="img"
-              value="none"
+              value=""
             />
             <label htmlFor="radio-13" />
           </div>
