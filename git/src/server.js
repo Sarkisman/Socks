@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
@@ -8,6 +9,7 @@ import indexRouter from './routes/indexRouter';
 import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
+import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
 
@@ -40,11 +42,13 @@ app.use(session(sessionConfig));
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.user = req.session.user;
+  res.locals.socks = [{ color: 'Красный', id: 1, img: 'банан' }, { color: 'Белый', id: 2, img: 'вишня' }, { color: 'Синий', id: 3, img: 'арбуз' }];
   next();
 });
 
 app.use('/', indexRouter);
 app.use('/auth/', authRouter);
 app.use('/api/', authCheck, apiRouter);
+app.use('/favourites/', favouritesRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
