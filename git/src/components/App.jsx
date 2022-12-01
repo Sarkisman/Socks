@@ -8,18 +8,17 @@ import Reg from './Reg';
 import Favourites from './Favourites';
 import SockForm from './SockForm';
 
-export default function App({ user, socks }) {
+export default function App({ user, userSocs }) {
   return (
     <div className="container">
       <NavBar user={user} />
       <Routes>
-        <Route path="/favourites" element={<Favourites socks={socks} />} />
+        <Route path="/favourites" element={<Favourites userSocs={userSocs} />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/reg" element={<Reg />} />
-        <Route path="/basket" element={<Basket socks={socks} />} />
+        <Route path="/basket" element={<Basket userSocs={userSocs} />} />
         <Route path="/sockgen" element={<SockForm user={user} />} />
-        {/* <Route path="/" element={<SockForm user={user} />} /> */}
       </Routes>
       <br />
     </div>

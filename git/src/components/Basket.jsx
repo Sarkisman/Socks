@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sock from './Sock';
 
-export default function Basket({ socks }) {
+export default function Basket() {
+  const [userSocs, setUserSocs] = useState([]);
+  useEffect(() => {
+    fetch('/basket/bas')
+      .then((data) => data.json())
+      .then((data) => setUserSocs(data));
+  }, []);
   const basketHandler = (e) => {
     console.log(e.target);
   };
@@ -11,7 +17,7 @@ export default function Basket({ socks }) {
   return (
     <div className="d-flex justify-content-center flex-wrap">
       <div className="mt-2 d-flex justify-content-center flex-wrap">
-        {socks?.map((el) => el.bascetSt && (
+        {userSocs?.map((el) => el.bascetSt && (
           <div className="card border-0 m-1">
             <div key={el.id} className="">
               <Sock inputs={el} />
