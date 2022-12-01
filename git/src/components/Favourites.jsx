@@ -14,10 +14,13 @@ export default function Favourites() {
       setUserSocs([...userSocs.filter((el) => el.id !== id)]);
     }
   };
+  
   const basketHandler = async (id) => {
-    const res = await fetch(`/basket/${id}`, { method: 'PATCH' });
+    console.log(userSocs);
+    const res = await fetch(`/basket/${id}`, { method: 'DELETE' });
     if (res.ok) {
-      setUserSocs([...userSocs.filter((el) => el.id !== id)]);
+      console.log(userSocs);
+      setUserSocs(userSocs.map((el) => (el.id === id ? { ...el, bascetSt: !el.bascetSt } : el)));
     }
   };
   return (
@@ -28,7 +31,8 @@ export default function Favourites() {
             <div>
               <Sock inputs={el} />
             </div>
-            <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>В КОРЗИНУ</button>
+            { el.bascetSt ? (<button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>В КОРЗИНЕ</button>)
+              : (<button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>В КОРЗИНУ</button>)}
             <button className="constructor-button" type="button" onClick={() => patchHandler(el.id)}>ДИЗЛАЙК!</button>
           </div>
         ))}
