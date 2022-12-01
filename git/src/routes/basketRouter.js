@@ -13,4 +13,23 @@ basket.get('/bas', async (req, res) => {
   res.json(userSocs);
 });
 
+basket.patch('/:id', async (req, res) => {
+  const someLike = await Sock.findOne({ where: { id: req.params.id } });
+  someLike.favorSt = !someLike.favorSt;
+  await someLike.save();
+  res.json(someLike);
+});
+
+basket.delete('/basket/order', async (req, res) => {
+  console.log('работает');
+  res.sendStatus(200)
+});
+
+basket.delete('/:id', async (req, res) => {
+  const someLike = await Sock.findOne({ where: { id: req.params.id } });
+  someLike.bascetSt = !someLike.bascetSt;
+  await someLike.save();
+  res.json(someLike);
+});
+
 export default basket;

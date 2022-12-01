@@ -8,8 +8,7 @@ route.get('/', async (req, res) => {
   res.render('Layout', initState);
 })
   .patch('/:id', async (req, res) => {
-    await Sock.update({ status: false }, { where: { id: req.params.id } });
-    // console.log(req.params.id);
+    await Sock.update({ favorSt: false }, { where: { id: req.params.id } });
     res.sendStatus(200);
   });
 
