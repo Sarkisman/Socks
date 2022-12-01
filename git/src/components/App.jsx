@@ -7,7 +7,8 @@ import NavBar from './NavBar';
 import Reg from './Reg';
 import SockForm from './SockForm';
 
-export default function App({ user, tracks, socks }) {
+export default function App({ user, socks }) {
+  console.log(user);
   return (
     <div className="container">
       <NavBar user={user} />
@@ -16,9 +17,9 @@ export default function App({ user, tracks, socks }) {
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/reg" element={<Reg />} />
         <Route path="/basket" element={<Basket socks={socks} />} />
+        <Route path="/sockgen" element={<SockForm user={user} />} />
       </Routes>
       <br />
-      <SockForm />
     </div>
   );
 }

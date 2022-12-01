@@ -14,9 +14,9 @@ export default function MainPage() {
           height: '150px',
         }}
       >
-        <h2>*Самое время быть уникальным! Смоделируй свою любимую пару носков!*</h2>
-        <button
-          type="button"
+        <h4>*Самое время быть уникальным! Смоделируй свою любимую пару носков!*</h4>
+        <a
+          href="/sockgen"
           className="btn btn-primary btn-lg"
           style={{
             top: '70%',
@@ -24,7 +24,7 @@ export default function MainPage() {
           }}
         >
           Генератор носков тут!!
-        </button>
+        </a>
       </div>
 
       <footer
