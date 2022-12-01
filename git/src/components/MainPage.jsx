@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function MainPage({ tracks }) {
+  
   return (
     <>
       <div
@@ -14,8 +15,8 @@ export default function MainPage({ tracks }) {
         }}
       >
         <h4>*Самое время быть уникальным! Смоделируй свою любимую пару носков!*</h4>
-        <button
-          type="button"
+        <a
+          href="/sockgen"
           className="btn btn-primary btn-lg"
           style={{
             position: 'fixed',
@@ -26,7 +27,7 @@ export default function MainPage({ tracks }) {
           }}
         >
           Генератор носков тут!!
-        </button>
+        </a>
       </div>
 
       <footer

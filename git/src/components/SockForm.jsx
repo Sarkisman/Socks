@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sock from './Sock';
 
-export default function SockForm() {
+export default function SockForm({ user }) {
 //   const images = {
 //     mask: '/newImage/mask.png',
 //     alpaka: '/newImage/alpaka.png',
@@ -29,29 +29,39 @@ export default function SockForm() {
 
   const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: 'none' });
 
+  // console.log(user);
+
   const changeHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // await fetch('/postmeme', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json;charset=utf-8',
-    //   },
-    //   body: JSON.stringify(inputs),
-    // });
+    const response = await fetch('/sockgen/postsock', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(inputs),
+    });
+    if (response.ok) { setInputs({ img: 'none', color: '#ffffff', pattern: 'none' }); }
     // для отрисовки из базы после записи
     //   .then((res) => res.json())
     //   .then((meme) => {
     //     setCurrMemes((prev) => [...prev, meme]);
     //   });
-    setInputs({ img: 'none', color: '#ffffff', pattern: 'none' });
   };
 
   const likeHandler = async (e) => {
     e.preventDefault();
+    const response = await fetch('/sockgen/likesock', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(inputs),
+    });
+    if (response.ok) { alert('Носок добавлен в избранное!'); }
     // await fetch('/postmeme', {
     //   method: 'POST',
     //   headers: {
@@ -72,7 +82,9 @@ export default function SockForm() {
         <Sock inputs={inputs} />
       </div>
       <form
-        action="submit"
+        onSubmit={submitHandler}
+        method="POST"
+        action="/postsock"
         style={{
           width: '60vw',
           transform: 'translateX(400px) translateY(-390px)',
@@ -168,7 +180,7 @@ export default function SockForm() {
             <label htmlFor="radio-17" />
           </div>
         </div>
-        <button className="constructor-button" onSubmit={submitHandler}>В КОРЗИНУ</button>
+        <button className="constructor-button" type="submit">В КОРЗИНУ</button>
         <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
 
       </form>
