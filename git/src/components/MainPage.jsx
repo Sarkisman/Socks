@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 
-export default function MainPage({ tracks }) {
+export default function MainPage() {
   return (
-    <>
+    <div>
       <div
+        className="text-center text-dark container bg-secondary"
         style={{
-          position: 'fixed',
+          borderRadius: 12,
+          marginTop: '7px',
+          position: 'absolute',
           top: '30%',
-          left: '20%',
-          height: '100px',
-          margin: '-50px 0 0 -100px',
+          height: '150px',
         }}
       >
-        <h4>*Самое время быть уникальным! Смоделируй свою любимую пару носков!*</h4>
+        <h2>*Самое время быть уникальным! Смоделируй свою любимую пару носков!*</h2>
         <button
           type="button"
           className="btn btn-primary btn-lg"
           style={{
-            position: 'fixed',
-            top: '40%',
-            left: '45%',
-            height: '100px',
-            margin: '-50px 0 0 -100px',
+            top: '70%',
+            height: '70px',
           }}
         >
           Генератор носков тут!!
@@ -29,41 +27,43 @@ export default function MainPage({ tracks }) {
       </div>
 
       <footer
-        className="text-center text-lg-start container bg-light text-muted"
+        className="text-center text-dark container bg-secondary"
         style={{
           textAlign: 'center',
           position: 'absolute',
           bottom: '0',
           width: '100%',
+          borderRadius: 12,
+          marginTop: '7px',
         }}
       >
         <section className="">
-          <div className="container text-center text-md-start mt-5">
-            <div className="row mt-3">
-              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">
+          <div className="container text-center text-md-start text-dark mt-3">
+            <div className="row mt-2">
+              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-1">
+                <h3 className="text-uppercase fw-bold mt-4 mb-4">
                   <i className="fas fa-gem me-3" />
                   “Enjoy socks”
-                </h6>
+                </h3>
               </div>
-              <div className="col-md-6 col-lg-6 col-xl-6 mb-4">
-                <h6 className="text-uppercase fw-bold mb-4">
+              <div className="col-md-6 col-lg-6 col-xl-6 mb-2">
+                <h6 className="text-uppercase fw-bold mb-2">
                   Контакты
                 </h6>
                 <div>
-                  <a href="mailto:info@enjoysocks.ru" className="link-secondary">почта: info@enjoysocks.ru</a>
+                  <a href="mailto:info@enjoysocks.ru" className="link-dark">почта: info@enjoysocks.ru</a>
                 </div>
                 <div>
-                  <a href="#!" className="link-secondary">Адрес: г. Москва, Шоссе Энтузиастов 12 ст2</a>
+                  <i href="#!" className="link-dark">Адрес: г. Москва, Шоссе Энтузиастов 12 ст2</i>
                 </div>
                 <div>
-                  <a href="#!" className="link-secondary">Номер телефона: +7 999 666 36 36</a>
+                  <i href="#!" className="link-dark">Номер телефона: +7 999 666 36 36</i>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </footer>
-    </>
+    </div>
   );
 }
