@@ -8,6 +8,8 @@ import indexRouter from './routes/indexRouter';
 import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
+import basketRouter from './routes/basketRouter';
+import { User } from '../db/models';
 
 require('dotenv').config();
 
@@ -37,14 +39,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.user = req.session.user;
+  res.locals.socks = await User.findAll();
   next();
 });
 
 app.use('/', indexRouter);
 app.use('/auth/', authRouter);
 app.use('/api/', authCheck, apiRouter);
+app.use('/basket/', basketRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
