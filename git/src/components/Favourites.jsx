@@ -7,8 +7,7 @@ export default function Favourites({ socks }) {
       <div>
         {socks.map((el) => (
           <div>
-            <Sock />
-            {el.color}
+            <Sock inputs={el} />
           </div>
         ))}
       </div>
