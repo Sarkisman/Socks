@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
@@ -9,7 +10,9 @@ import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
 import basketRouter from './routes/basketRouter';
-import { User } from '../db/models';
+import sockGenRouter from './routes/sockGenRouter';
+import { Sock } from '../db/models';
+import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
 
@@ -42,7 +45,7 @@ app.use(session(sessionConfig));
 app.use(async (req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.user = req.session.user;
-  res.locals.socks = await User.findAll();
+  res.locals.socks = await Sock.findAll();
   next();
 });
 
@@ -50,5 +53,7 @@ app.use('/', indexRouter);
 app.use('/auth/', authRouter);
 app.use('/api/', authCheck, apiRouter);
 app.use('/basket/', basketRouter);
+app.use('/favourites/', favouritesRouter);
+app.use('/sockgen', sockGenRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
