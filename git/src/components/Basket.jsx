@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 export default function Basket({ socks }) {
   return (
-    <div>
+    <div className='d-flex justify-content-center'>
       {socks.map((el) => el.basketSt
-      && (<li><Sock color={el.color} pattern={el.pattern} img={el.img} /></li>))}
+      && (<li key={el.id}><Sock inputs={el}/></li>))}
     </div>
   );
 }
