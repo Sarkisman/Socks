@@ -8,6 +8,8 @@ import indexRouter from './routes/indexRouter';
 import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
+import basketRouter from './routes/basketRouter';
+import sockGenRouter from './routes/sockGenRouter';
 
 require('dotenv').config();
 
@@ -39,12 +41,15 @@ app.use(session(sessionConfig));
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
-  res.locals.user = req.session.user;
+  res.locals.user = req.session.user; // назначаем юзера из куки в сессию
+  res.locals.socks = [{ color: 'Белый', pattern: '', img: '' }, { color: 'Голубой', pattern: '', img: '' }, { color: 'Красный', pattern: '', img: '' }];
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/auth/', authRouter);
-app.use('/api/', authCheck, apiRouter);
+app.use('/auth', authRouter);
+app.use('/api', authCheck, apiRouter);
+app.use('/basket', basketRouter);
+app.use('/sockgen', sockGenRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

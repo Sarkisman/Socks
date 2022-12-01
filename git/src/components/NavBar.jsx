@@ -6,7 +6,7 @@ export default function NavBar({ user }) {
     <nav className="navbar navbar-expand-lg bg-danger" style={{ borderRadius: 12, marginTop: '7px' }}>
       <div className="container-fluid ">
         <a className="navbar-brand" href="/">
-          <img src="/image/icon.png" alt="" width="30" height="35" />
+          <img src="/image/лого.png" alt="" width="30" height="35" />
         </a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
@@ -24,9 +24,21 @@ export default function NavBar({ user }) {
               </>
             )
               : (
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#!">Избранное</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/basket">Корзина</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/sockgen">Генератор носков</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>
+                  </li>
+
+                </>
               )}
           </ul>
         </div>

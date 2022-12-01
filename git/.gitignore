@@ -2,6 +2,8 @@ public/app.js
 public/vendor.js
 sessions/
 
+.DS_Store
+
 # Logs
 logs
 *.log
