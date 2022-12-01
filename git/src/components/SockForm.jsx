@@ -29,8 +29,6 @@ export default function SockForm({ user }) {
 
   const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: 'none' });
 
-  // console.log(user);
-
   const changeHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -44,12 +42,7 @@ export default function SockForm({ user }) {
       },
       body: JSON.stringify(inputs),
     });
-    if (response.ok) { setInputs({ img: 'none', color: '#ffffff', pattern: 'none' }); }
-    // для отрисовки из базы после записи
-    //   .then((res) => res.json())
-    //   .then((meme) => {
-    //     setCurrMemes((prev) => [...prev, meme]);
-    //   });
+    if (response.ok) { alert('Носок добавлен в корзину!'); }
   };
 
   const likeHandler = async (e) => {
@@ -62,15 +55,6 @@ export default function SockForm({ user }) {
       body: JSON.stringify(inputs),
     });
     if (response.ok) { alert('Носок добавлен в избранное!'); }
-    // await fetch('/postmeme', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json;charset=utf-8',
-    //   },
-    //   body: JSON.stringify(inputs),
-    //   // body: JSON.stringify(Object.fromEntries(new FormData.....))  // если не нужна валидация можно сделать такую форму
-    // });
-    console.log(inputs);
   };
 
   return (
