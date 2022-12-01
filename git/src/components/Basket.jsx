@@ -8,26 +8,57 @@ export default function Basket() {
       .then((data) => data.json())
       .then((data) => setUserSocs(data));
   }, []);
-  const basketHandler = (e) => {
-    console.log(e.target);
+  const basketHandler = (id) => {
+    fetch(`/basket/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then(() => setUserSocs(
+        (prev) => prev.map((el) => (el.id === id ? { ...el, bascetSt: !el.bascetSt } : el)),
+      ));
   };
-  const likeHandler = (e) => {
-    console.log(e.target);
+  const likeHandler = async (id) => {
+    fetch(`/basket/${id}`, {
+      method: 'PATCH',
+    })
+      .then((res) => res.json())
+      .then(() => setUserSocs(
+        (prev) => prev.map((el) => (el.id === id ? { ...el, favorSt: !el.favorSt } : el)),
+      ));
+  };
+  const orderHandler = () => {
+    fetch('/basket/order', {
+      method: 'DELETE',
+    })
+      .then((res) => res.json());
   };
   return (
-    <div className="d-flex justify-content-center flex-wrap">
-      <div className="mt-2 d-flex justify-content-center flex-wrap">
-        {userSocs?.map((el) => el.bascetSt && (
-          <div className="card border-0 m-1">
-            <div key={el.id} className="">
-              <Sock inputs={el} />
+    <>
+      <div className="d-flex justify-content-center flex-wrap">
+        <div className="mt-2 d-flex flex-wrap">
+          {userSocs?.map((el) => el.bascetSt && (el.favorSt === false ? (
+            <div className="card border-0 m-1">
+              <div key={el.id} className="">
+                <Sock inputs={el} />
+              </div>
+              <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
+              <button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ЛАЙК!</button>
             </div>
-            <button className="constructor-button" type="button" onClick={basketHandler}>В КОРЗИНУ</button>
-            <button className="constructor-button" type="button" onClick={likeHandler}>ЛАЙК!</button>
-          </div>
-        ))}
+          ) : (
+            <div className="card border-0 m-1">
+              <div key={el.id} className="">
+                <Sock inputs={el} />
+              </div>
+              <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
+              <button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ДИЗЛАЙК!</button>
+            </div>
+          )
+          ))}
+        </div>
       </div>
-      <button type="button" className="constructor-button m-1">Заказать</button>
-    </div>
+      <div className="d-flex justify-content-center flex-wrap">
+        <button type="button" className="constructor-button m-1" onClick={orderHandler}>Заказать</button>
+      </div>
+    </>
   );
 }
