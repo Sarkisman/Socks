@@ -31,8 +31,10 @@ sockgen.post('/postsock', async (req, res) => {
 });
 
 sockgen.post('/likesock', async (req, res) => {
+console.log(req.body);
   req.body.userId = req.session?.user?.id; // записываем из запроса req
-  req.body.favorSt = true; // записываем из запроса req
+  req.body.favorSt = true;
+  console.log(req.body); // записываем из запроса req
 
   await Sock.create(req.body); // записываем из запроса req
   //   const currMemeWithUsername = await Sock.findOne({ where: { id: currMeme.id }, include: User });
