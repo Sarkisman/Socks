@@ -12,7 +12,6 @@ import authCheck from './middlewares/isAuth';
 import basketRouter from './routes/basketRouter';
 import sockGenRouter from './routes/sockGenRouter';
 import { Sock } from '../db/models';
-import { User } from '../db/models';
 import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
@@ -55,5 +54,6 @@ app.use('/auth/', authRouter);
 app.use('/api/', authCheck, apiRouter);
 app.use('/basket/', basketRouter);
 app.use('/favourites/', favouritesRouter);
+app.use('/sockgen', sockGenRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
