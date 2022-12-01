@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sock from './Sock';
 
-export default function Basket() {
+export default function Basket({ user }) {
   const [userSocs, setUserSocs] = useState([]);
   useEffect(() => {
     fetch('/basket/bas')
@@ -27,32 +27,23 @@ export default function Basket() {
       ));
   };
   const orderHandler = () => {
-    fetch('/basket/order', {
-      method: 'DELETE',
+    fetch(`/basket/order/${user.id}`, {
+      method: 'POST',
     })
-      .then((res) => res.json());
+      .then(() => setUserSocs([]));
   };
   return (
     <>
       <div className="d-flex justify-content-center flex-wrap">
         <div className="mt-2 d-flex flex-wrap">
-          {userSocs?.map((el) => el.bascetSt && (el.favorSt === false ? (
-            <div className="card border-0 m-1">
-              <div key={el.id} className="">
-                <Sock inputs={el} />
-              </div>
-              <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
-              <button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ЛАЙК!</button>
+          {userSocs?.map((el) => el.bascetSt && (
+          <div className="card border-0 m-1">
+            <div key={el.id} className="">
+              <Sock inputs={el} />
             </div>
-          ) : (
-            <div className="card border-0 m-1">
-              <div key={el.id} className="">
-                <Sock inputs={el} />
-              </div>
-              <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
-              <button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ДИЗЛАЙК!</button>
-            </div>
-          )
+            <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
+            {!el.favorSt ? (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ЛАЙК!</button>) : (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ДИЗЛАЙК!</button>)}
+          </div>
           ))}
         </div>
       </div>
