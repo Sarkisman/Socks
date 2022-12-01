@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Sock from './Sock';
 
 export default function Favourites({ socks }) {
   return (
@@ -6,6 +7,7 @@ export default function Favourites({ socks }) {
       <div>
         {socks.map((el) => (
           <div>
+            <Sock />
             {el.color}
           </div>
         ))}

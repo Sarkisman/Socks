@@ -1,4 +1,5 @@
 import express from 'express';
+import { Sock } from '../../db/models';
 
 const route = express.Router();
 

@@ -9,6 +9,8 @@ import indexRouter from './routes/indexRouter';
 import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
+import basketRouter from './routes/basketRouter';
+import { User } from '../db/models';
 import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
@@ -39,16 +41,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.user = req.session.user;
-  res.locals.socks = [{ color: 'Красный', id: 1, img: 'банан' }, { color: 'Белый', id: 2, img: 'вишня' }, { color: 'Синий', id: 3, img: 'арбуз' }];
+  res.locals.socks = await User.findAll();
   next();
 });
 
 app.use('/', indexRouter);
 app.use('/auth/', authRouter);
 app.use('/api/', authCheck, apiRouter);
+app.use('/basket/', basketRouter);
 app.use('/favourites/', favouritesRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
