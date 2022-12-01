@@ -1,3 +1,45 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* .btn-mpage {
+    background-color: #2d2d2d,
+} */
+
+/* .btn-mpage:hover {
+    background-color: #ff5e63;
+} */
+
+.h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+.nav-link {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    margin-top: 10px;
+    color: white;
+}
+
+.footerText {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.nav-link:hover {
+    text-shadow: 0 0 .9px white, 0 0 .9px white, 0 0 .9px white;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .form_radio_group {
     display: inline-block;
     overflow: hidden;
@@ -216,7 +258,7 @@
     border: solid grey 1px;
     border-radius: 45px;
     margin: 10px 10px 10px 70px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     text-align: center;

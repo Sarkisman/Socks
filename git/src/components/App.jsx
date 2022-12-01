@@ -7,11 +7,13 @@ import NavBar from './NavBar';
 import Reg from './Reg';
 import Favourites from './Favourites';
 import SockForm from './SockForm';
+import Footer from './Footer';
 
 export default function App({ user, userSocs }) {
   return (
-    <div className="container">
+    <div className="wrapper" style={{ height: '80vh' }}>
       <NavBar user={user} />
+      <div style={{ minHeight: '60px' }} />
       <Routes>
         <Route path="/favourites" element={<Favourites userSocs={userSocs} />} />
         <Route path="/" element={<MainPage />} />
@@ -20,7 +22,7 @@ export default function App({ user, userSocs }) {
         <Route path="/basket" element={<Basket userSocs={userSocs} />} />
         <Route path="/sockgen" element={<SockForm user={user} />} />
       </Routes>
-      <br />
+      <Footer style={{ position: 'absolute', zIndex: '1000' }} />
     </div>
   );
 }

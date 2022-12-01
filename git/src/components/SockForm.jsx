@@ -58,12 +58,18 @@ export default function SockForm({ user }) {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <h1 style={{ marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
+    <div
+      style={{
+        position: 'relative', height: '100%', display: 'flex', flexWrap: 'wrap', zIndex: '100',
+      }}
+      className="container"
+    >
+      <h1 style={{ marginTop: '20px', marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
       <hr />
+      <div style={{ width: '100%', height: '2px', backgroundColor: 'black' }} />
       <br />
       <div>
-        <Sock inputs={inputs} />
+        <Sock inputs={inputs} style={{ display: 'block' }} />
       </div>
       <form
         onSubmit={submitHandler}
@@ -71,7 +77,8 @@ export default function SockForm({ user }) {
         action="/postsock"
         style={{
           width: '60vw',
-          transform: 'translateX(400px) translateY(-390px)',
+          transform: 'translateX(5vw)',
+          display: 'block',
         }}
       >
         <h2 style={{ margin: '0 auto', transform: 'translateX(70px)' }}>выберите цвет ваших носков</h2>
