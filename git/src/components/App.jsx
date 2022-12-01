@@ -5,6 +5,7 @@ import Login from './Login';
 import MainPage from './MainPage';
 import NavBar from './NavBar';
 import Reg from './Reg';
+import SockForm from './SockForm';
 
 export default function App({ user, tracks, socks }) {
   return (
@@ -16,6 +17,8 @@ export default function App({ user, tracks, socks }) {
         <Route path="/auth/reg" element={<Reg />} />
         <Route path="/basket" element={<Basket socks={socks} />} />
       </Routes>
+      <br />
+      {/* <SockForm /> */}
     </div>
   );
 }

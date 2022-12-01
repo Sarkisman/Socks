@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export default function Basket({ socks }) {
+  socks = {}
   return (
     <div className='d-flex justify-content-center'>
       {socks.map((el) => el.basketSt
