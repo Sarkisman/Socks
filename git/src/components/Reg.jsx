@@ -24,7 +24,12 @@ export default function Registration() {
   };
   const changeHandler = (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
-    <div className="container" style={{ width: 400, margin: 'auto', color: 'white' }}>
+    <div
+      className="container"
+      style={{
+        width: 400, margin: 'auto', color: 'white', height: '100%',
+      }}
+    >
       <h1 className="is-size-2">Регистрация пользователя</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={submitHandler}>
