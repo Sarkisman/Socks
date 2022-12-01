@@ -27,7 +27,7 @@ export default function SockForm({ user }) {
 //     grey: '#afafaf',
 //   };
 
-  const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: 'none' });
+  const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: '' });
 
   const changeHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -129,7 +129,7 @@ export default function SockForm({ user }) {
             <label htmlFor="radio-11">треугольники</label>
           </div>
           <div className="form_radio_group-item">
-            <input onChange={changeHandler} id="radio-12" type="radio" name="pattern" value="none" />
+            <input onChange={changeHandler} id="radio-12" type="radio" name="pattern" value="" />
             <label htmlFor="radio-12">без узора</label>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function SockForm({ user }) {
               id="radio-13"
               type="radio"
               name="img"
-              value="none"
+              value=""
             />
             <label htmlFor="radio-13" />
           </div>
