@@ -7,9 +7,7 @@ export default function Favourites({ socks }) {
       <div>
         {socks.map((el) => (
           <div>
-            <Sock />
-            inputs=
-            {el}
+            <Sock inputs={el} />
           </div>
         ))}
       </div>
