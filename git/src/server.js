@@ -10,6 +10,7 @@ import authRouter from './routes/authRouter';
 import apiRouter from './routes/apiRouter';
 import authCheck from './middlewares/isAuth';
 import basketRouter from './routes/basketRouter';
+import sockGenRouter from './routes/sockGenRouter';
 import { User } from '../db/models';
 import favouritesRouter from './routes/favouritesRouter';
 
