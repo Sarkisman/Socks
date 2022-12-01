@@ -6,7 +6,7 @@ export default function Favourites({ socks }) {
     <div className="d-flex justify-content-center">
       <div>
         {socks.map((el) => (
-          <div>
+          <div key={el.id}>
             <Sock inputs={el} />
           </div>
         ))}
