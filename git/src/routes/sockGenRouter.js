@@ -4,8 +4,13 @@ import { Sock } from '../../db/models';
 const sockgen = express.Router();
 
 sockgen.get('/', async (req, res) => {
-  const initState = { };
-  res.render('Layout', initState);
+  try {
+    const initState = { };
+    res.render('Layout', initState);
+    Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
+  } catch (error) {
+    //
+  }
 });
 
 sockgen.post('/postsock', async (req, res) => {

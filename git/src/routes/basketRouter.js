@@ -4,9 +4,13 @@ import { Sock } from '../../db/models';
 const basket = express.Router();
 
 basket.get('/', (req, res) => {
-  await Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
-  const initState = { };
-  res.render('Layout', initState);
+  try {
+    const initState = { };
+    res.render('Layout', initState);
+    Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
+  } catch (error) {
+    // log
+  }
 });
 
 basket.get('/bas', async (req, res) => {
