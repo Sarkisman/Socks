@@ -20,9 +20,9 @@ basket.patch('/:id', async (req, res) => {
   res.json(someLike);
 });
 
-basket.delete('/basket/order', async (req, res) => {
-  console.log('работает');
-  res.sendStatus(200)
+basket.post('/order/:id', async (req, res) => {
+  await Sock.update({ bascetSt: false }, { where: { userId: req.params.id } });
+  res.sendStatus(200);
 });
 
 basket.delete('/:id', async (req, res) => {

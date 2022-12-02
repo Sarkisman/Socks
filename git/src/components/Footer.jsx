@@ -9,7 +9,12 @@ export default function Footer() {
           textAlign: 'center',
           color: 'white',
           backgroundColor: '#2d2d2d',
+          fontFamily: 'Roboto',
+          fontWeight: 'regular',
+          position: 'fixed',
           width: '100%',
+          height: '90px',
+          zIndex: '1000',
         }}
       >
         <section>
