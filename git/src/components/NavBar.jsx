@@ -11,7 +11,7 @@ export default function NavBar({ user }) {
         fontWeight: 'regular',
         position: 'fixed',
         width: '100%',
-        maxHeight: '60px',
+        height: '60px',
         zIndex: '1000',
       }}
     >
@@ -60,7 +60,7 @@ export default function NavBar({ user }) {
                   <li className="nav-item">
                     <h4>
                       {' '}
-                      <a className="nav-link active" aria-current="page" href="/auth/logout">Выход</a>
+                      <a className="nav-link active" aria-current="page" style={{ color: 'white' }} href="/auth/logout">ВЫХОД</a>
                     </h4>
                   </li>
 

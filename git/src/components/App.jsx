@@ -22,7 +22,7 @@ export default function App({ user, userSocs }) {
         <Route path="/basket" element={<Basket user={user} newUserSocs={userSocs} />} />
         <Route path="/sockgen" element={<SockForm user={user} />} />
       </Routes>
-      <Footer style={{ position: 'absolute', zIndex: '1000' }} />
+      <Footer />
     </div>
   );
 }
