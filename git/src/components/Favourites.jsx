@@ -16,10 +16,8 @@ export default function Favourites() {
   };
 
   const basketHandler = async (id) => {
-    console.log(userSocs);
     const res = await fetch(`/basket/${id}`, { method: 'DELETE' });
     if (res.ok) {
-      console.log(userSocs);
       setUserSocs(userSocs.map((el) => (el.id === id ? { ...el, bascetSt: !el.bascetSt } : el)));
     }
   };
