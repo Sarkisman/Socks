@@ -8,7 +8,6 @@ export default function MainPage() {
       backgroundPosition: 'center/center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      //   border: 'solid black 1px',
       height: '100%',
     }}
     >

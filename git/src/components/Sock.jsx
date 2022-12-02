@@ -1,20 +1,15 @@
 import React from 'react';
 
 export default function Sock({ inputs }) {
-  //   const background = images.patMath;
-  //   console.log(images);
   return (
     <div>
       <div
         name="color"
         style={{
-        // backgroundImage: `url(${background})`,
           backgroundColor: inputs.color,
-          //   backgroundColor: colors.yellow,
           backgroundPosition: 'center/center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          //   border: 'solid black 1px',
           width: '324px',
           height: '400px',
         }}

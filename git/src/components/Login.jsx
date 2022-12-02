@@ -14,8 +14,7 @@ export default function login() {
       body: JSON.stringify(input),
     });
     if (response.ok) {
-      window.location.href = '/'; // редирект на главную
-      // setInput({ name: '' }); // если хотим очистить инпут
+      window.location.href = '/';
     } else {
       const data = await response.json();
       setError(data.message);
