@@ -20,20 +20,30 @@ html {
 }
 
 .nav-link {
+    position: static;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    margin-top: 10px;
+    margin-top: 18px;
     color: white;
+    border-bottom: solid #282828 5px;
 }
+
+.nav-link:hover {
+    text-shadow: 0 0 .9px white, 0 0 .9px white, 0 0 .9px white;
+    top: 8px;
+    border-bottom: solid white 5px;
+}
+
+/* .nav-link:active {
+    text-shadow: 0 0 .9px white, 0 0 .9px white, 0 0 .9px white;
+    top: 8px;
+    border-bottom: solid white 5px;
+} */
 
 .footerText {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     font-style: normal;
-}
-
-.nav-link:hover {
-    text-shadow: 0 0 .9px white, 0 0 .9px white, 0 0 .9px white;
 }
 
 body {
@@ -275,4 +285,50 @@ body {
     box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
     color: white;
     transform: translateY(-7px);
+}
+
+/* Tooltip CSS */
+
+HTML CSS Result Skip Results Iframe EDIT ON .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+.hover-text:hover .tooltip-text {
+    visibility: visible;
+}
+
+#top {
+    top: -40px;
+    left: -50%;
+}
+
+#bottom {
+    top: 25px;
+    left: -50%;
+}
+
+#left {
+    top: -8px;
+    right: 120%;
+}
+
+#right {
+    top: -8px;
+    left: 120%;
+}
+
+.hover-text {
+    position: relative;
+    display: inline-block;
+    margin: 40px;
+    font-family: Avenir;
+    text-align: center;
 }
