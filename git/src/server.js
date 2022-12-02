@@ -17,8 +17,8 @@ const PORT = process.env.SERVER_PORT || 3002;
 const app = express();
 const FileStore = store(session);
 
-app.engine('jsx', jsxRender);
-app.set('view engine', 'jsx');
+app.engine('js', jsxRender);
+app.set('view engine', 'js');
 app.set('views', path.join(__dirname, 'components'));
 
 const sessionConfig = {

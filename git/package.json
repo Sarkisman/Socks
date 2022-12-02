@@ -6,7 +6,8 @@
   "scripts": {
     "webpack": "webpack -wd eval-source-map",
     "dev": "babel-node src/server.js",
-    "start": "webpack -d eval-source-map && babel-node src/server.js"
+    "build": "webpack && babel src --copy-files --out-dir distr",
+    "start": "node distr/server.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.19.3",
     "axios": "^1.1.3",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.2",
