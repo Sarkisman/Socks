@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Sock from './Sock';
 
-export default function Basket({ user, newUserSocks }) {
+export default function Basket({ user }) {
+  const [counter, setCounter] = useState(1);
+  const changeHandler = (e) => {
+    if (e.target.value > 0) {
+      setCounter(e.target.value);
+    }
+  };
   const [userSocs, setUserSocs] = useState([]);
   const [string, setString] = useState('');
   useEffect(() => {
@@ -47,12 +53,13 @@ export default function Basket({ user, newUserSocks }) {
       </div>
       <div className="mt-2 d-flex justify-content-center flex-wrap">
         {userSocs?.map((el) => el.bascetSt && (
-          <div className="card border-0 m-1">
-            <div key={el.id} className="">
+          <div key={el.id} className="card border-0 m-1">
+            <div className="">
               <Sock inputs={el} />
             </div>
             <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
             {!el.favorSt ? (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ЛАЙК!</button>) : (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ДИЗЛАЙК!</button>)}
+            <input type="number" onChange={changeHandler} className="count input-group-text mw-50" name="qty" defaultValue="1" min="1" max="100" />
             <div style={{ height: '90px' }} />
           </div>
         ))}
