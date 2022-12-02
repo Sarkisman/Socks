@@ -7,9 +7,10 @@ export default function Basket({ user, newUserSocks }) {
   useEffect(() => {
     fetch('/basket/bas')
       .then((data) => data.json())
-      .then((data) => setUserSocs(data));
+      .then((data) => {
+        setUserSocs(data);
+      });
   }, []);
-  console.log(userSocs);
   const basketHandler = (id) => {
     fetch(`/basket/${id}`, {
       method: 'DELETE',
@@ -33,7 +34,11 @@ export default function Basket({ user, newUserSocks }) {
       method: 'POST',
     })
       .then(() => setUserSocs([]))
-      .then(() => (userSocs === [] ? setString('Ваша корзина пуста. Выберите носки в генераторе носков') : setString(`Ваш заказ добавлен в очередь. На вашу почту ${user.email} отправлено письмо с деталями заказа.`)));
+      .then(() => {
+        userSocs.length
+          ? (setString(`Ваш заказ добавлен в очередь. На вашу почту ${user.email} отправлено письмо с деталями заказа.`))
+          : (setString('Ваша корзина пуста. Перейдите в генератор носков для выбора.'));
+      });
   };
   return (
     <div style={{ height: '100%' }} className="d-flex justify-content-center flex-wrap flex-row">
