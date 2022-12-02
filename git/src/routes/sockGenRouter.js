@@ -19,7 +19,7 @@ sockgen.post('/postsock', async (req, res) => {
   const {
     color, pattern, img, userId, favorSt, bascetSt,
   } = req.body;
-  await Sock.findOrCreate({
+  const [_, iscreated] = await Sock.findOrCreate({
     where: {
       color, pattern, img, userId,
     },
@@ -27,6 +27,13 @@ sockgen.post('/postsock', async (req, res) => {
       color, pattern, img, userId, favorSt, bascetSt,
     },
   });
+  if (!iscreated) {
+    await Sock.update({ bascetSt: true }, {
+      where: {
+        color, pattern, img, userId,
+      },
+    });
+  }
   res.sendStatus(200);
 });
 
@@ -36,14 +43,22 @@ sockgen.post('/likesock', async (req, res) => {
   const {
     color, pattern, img, userId, favorSt, bascetSt,
   } = req.body;
-  await Sock.findOrCreate({
+  const [_, iscreated] = await Sock.findOrCreate({
     where: {
       color, pattern, img, userId,
     },
     defaults: {
       color, pattern, img, userId, favorSt, bascetSt,
     },
+
   });
+  if (!iscreated) {
+    await Sock.update({ favorSt: true }, {
+      where: {
+        color, pattern, img, userId,
+      },
+    });
+  }
   res.sendStatus(200);
 });
 
