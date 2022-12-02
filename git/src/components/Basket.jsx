@@ -35,26 +35,39 @@ export default function Basket({ user, newUserSocks }) {
       .then(() => setString(`Ваш заказ добавлен в очередь. На вашу почту ${user.email} отправлено письмо с деталями заказа.`));
   };
   return (
-    <>
-      <div style={{ height: '100%' }} className="d-flex justify-content-center flex-wrap flex-row">
-        <div className="mt-2 d-flex flex-wrap">
-          {userSocs?.map((el) => el.bascetSt && (
+    <div style={{ height: '100%' }} className="d-flex justify-content-center flex-wrap flex-row">
+      <div className="d-flex justify-content-center flex-wrap">
+        {string}
+      </div>
+      <div className="mt-2 d-flex justify-content-center flex-wrap">
+        {userSocs?.map((el) => el.bascetSt && (
           <div className="card border-0 m-1">
             <div key={el.id} className="">
               <Sock inputs={el} />
             </div>
             <button className="constructor-button" type="button" onClick={() => basketHandler(el.id)}>УБРАТЬ ИЗ КОРЗИНЫ</button>
             {!el.favorSt ? (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ЛАЙК!</button>) : (<button className="constructor-button" type="button" onClick={() => likeHandler(el.id)}>ДИЗЛАЙК!</button>)}
+            <div style={{ height: '90px' }} />
           </div>
-          ))}
-        </div>
+        ))}
       </div>
       <div className="d-flex justify-content-center flex-wrap">
-        <button type="button" className="constructor-button m-1" onClick={orderHandler}>Заказать</button>
+        <button
+          style={{
+            position: 'fixed',
+            height: '120px',
+            width: '120px',
+            borderRadius: '100%',
+            bottom: '100px',
+            right: '60px',
+          }}
+          type="button"
+          className="constructor-button m-1"
+          onClick={orderHandler}
+        >
+          Заказать
+        </button>
       </div>
-      <div className="d-flex justify-content-center flex-wrap">
-        {string}
-      </div>
-    </>
+    </div>
   );
 }

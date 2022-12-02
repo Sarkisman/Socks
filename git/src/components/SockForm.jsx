@@ -42,7 +42,7 @@ export default function SockForm({ user }) {
       },
       body: JSON.stringify(inputs),
     });
-    if (response.ok) { alert('Носок добавлен в корзину!'); }
+    // if (response.ok) { alert('Носок добавлен в корзину!'); }
   };
 
   const likeHandler = async (e) => {
@@ -54,7 +54,7 @@ export default function SockForm({ user }) {
       },
       body: JSON.stringify(inputs),
     });
-    if (response.ok) { alert('Носок добавлен в избранное!'); }
+    // if (response.ok) { alert('Носок добавлен в избранное!'); }
   };
 
   return (
@@ -64,8 +64,7 @@ export default function SockForm({ user }) {
       }}
       className="container"
     >
-      <h1 style={{ marginTop: '20px', marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
-      <hr />
+      <h1 style={{ marginLeft: '220px', fontSize: '60px' }}>🧦 КОНСТРУКТОР НОСКОВ 🧦</h1>
       <div style={{ width: '100%', height: '2px', backgroundColor: 'black' }} />
       <br />
       <div>
@@ -78,7 +77,7 @@ export default function SockForm({ user }) {
         style={{
           position: 'absolute',
           width: '60vw',
-          transform: 'translateX(40%) translateY(-90%)',
+          transform: 'translateX(60%) translateY(-90%)',
           display: 'block',
         }}
       >
@@ -172,8 +171,13 @@ export default function SockForm({ user }) {
             <label htmlFor="radio-17" />
           </div>
         </div>
-        <button className="constructor-button" type="submit">В КОРЗИНУ</button>
-        <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
+        {user
+          ? (
+            <>
+              <button className="constructor-button" type="submit">В КОРЗИНУ</button>
+              <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
+            </>
+          ) : (<div className="mt-4">ДЛЯ ДОБАВЛЕНИЯ В КОРЗИНУ НЕОБХОДИМО ЗАРЕГИСТРИРОВАТЬСЯ</div>)}
 
       </form>
 
