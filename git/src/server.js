@@ -7,11 +7,8 @@ import store from 'session-file-store';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import authRouter from './routes/authRouter';
-import apiRouter from './routes/apiRouter';
-import authCheck from './middlewares/isAuth';
 import basketRouter from './routes/basketRouter';
 import sockGenRouter from './routes/sockGenRouter';
-import { Sock } from '../db/models';
 import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
@@ -50,7 +47,6 @@ app.use(async (req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/auth/', authRouter);
-app.use('/api/', authCheck, apiRouter);
 app.use('/basket/', basketRouter);
 app.use('/favourites/', favouritesRouter);
 app.use('/sockgen', sockGenRouter);

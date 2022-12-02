@@ -7,9 +7,4 @@ router.get('/', async (req, res) => {
   res.render('Layout', initState);
 });
 
-// router.get('/sockgen', async (req, res) => {
-//   const initState = { };
-//   res.render('Layout', initState);
-// });
-
 export default router;
