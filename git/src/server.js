@@ -13,7 +13,7 @@ import favouritesRouter from './routes/favouritesRouter';
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT ?? 3002;
 const app = express();
 const FileStore = store(session);
 
