@@ -54,7 +54,6 @@ export default function SockForm({ user }) {
       },
       body: JSON.stringify(inputs),
     });
-    // if (response.ok) { alert('Носок добавлен в избранное!'); }
   };
 
   return (
