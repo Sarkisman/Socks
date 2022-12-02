@@ -4,6 +4,7 @@ import { Sock } from '../../db/models';
 const route = express.Router();
 
 route.get('/', async (req, res) => {
+  await Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
   const initState = { };
   res.render('Layout', initState);
 })
