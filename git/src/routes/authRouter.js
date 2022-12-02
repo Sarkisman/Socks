@@ -60,9 +60,13 @@ auth.post('/login', async (req, res) => {
 });
 
 auth.get('/logout', async (req, res) => {
-  await Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
-  res.clearCookie('user_sid'); // удалить куку
-  req.session.destroy(); // Завершить сессию
-  res.redirect('/');
+  try {
+    Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
+    res.clearCookie('user_sid'); // удалить куку
+    req.session.destroy(); // Завершить сессию
+    res.redirect('/');
+  } catch (error) {
+    //
+  }
 });
 export default auth;

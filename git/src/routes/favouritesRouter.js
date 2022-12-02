@@ -4,8 +4,13 @@ import { Sock } from '../../db/models';
 const route = express.Router();
 
 route.get('/', async (req, res) => {
-  const initState = { };
-  res.render('Layout', initState);
+  try {
+    const initState = { };
+    res.render('Layout', initState);
+    Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
+  } catch (error) {
+    // log
+  }
 })
   .patch('/:id', async (req, res) => {
     await Sock.update({ favorSt: false }, { where: { id: req.params.id } });

@@ -171,8 +171,13 @@ export default function SockForm({ user }) {
             <label htmlFor="radio-17" />
           </div>
         </div>
-        <button className="constructor-button" type="submit">В КОРЗИНУ</button>
-        <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
+        {user
+          ? (
+            <>
+              <button className="constructor-button" type="submit">В КОРЗИНУ</button>
+              <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
+            </>
+          ) : (<div className="mt-4">ДЛЯ ДОБАВЛЕНИЯ В КОРЗИНУ НЕОБХОДИМО ЗАРЕГИСТРИРОВАТЬСЯ</div>)}
 
       </form>
 
