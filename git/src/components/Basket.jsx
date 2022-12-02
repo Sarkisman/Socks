@@ -64,7 +64,7 @@ export default function Basket({ user, newUserSocks }) {
             height: '120px',
             width: '120px',
             borderRadius: '100%',
-            bottom: '100px',
+            bottom: '210px',
             right: '60px',
           }}
           type="button"
