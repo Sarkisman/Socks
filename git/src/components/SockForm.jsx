@@ -2,31 +2,8 @@ import React, { useState } from 'react';
 import Sock from './Sock';
 
 export default function SockForm({ user }) {
-//   const images = {
-//     mask: '/newImage/mask.png',
-//     alpaka: '/newImage/alpaka.png',
-//     yoda: '/newImage/yoda.png',
-//     duck: '/newImage/duck.png',
-//     cactus: '/newImage/cactus.png',
-//     patDot: '/newImage/patDot.png',
-//     patMath: '/newImage/patMath.png',
-//     patNight: '/newImage/patNight.png',
-//     patTriangle: '/newImage/patTriangle.png',
-//     yodaRadio: '/newImage/yodaRadio.png',
-//     cactusRadio: '/newImage/cactusRadio.png',
-//     duckRadio: '/newImage/duckRadio.png',
-//     alpakaRadio: '/newImage/alpakaRadio.png',
-//   };
-//   const colors = {
-//     white: '#ffffff',
-//     pink: '#e553cb',
-//     violet: '#7e42c2',
-//     yellow: '#f0e81b',
-//     lightGreen: '#19ef8D',
-//     blue: '#197eef',
-//     grey: '#afafaf',
-//   };
-
+  const [info, setInfo] = useState('hidden');
+  const [info2, setInfo2] = useState('hidden');
   const [inputs, setInputs] = useState({ img: '/newImage/duck.png', color: '#f0e81b', pattern: '' });
 
   const changeHandler = (e) => {
@@ -43,6 +20,12 @@ export default function SockForm({ user }) {
       body: JSON.stringify(inputs),
     });
     // if (response.ok) { alert('Носок добавлен в корзину!'); }
+    if (response.ok) {
+      setInfo('visible');
+      setTimeout(() => {
+        setInfo('hidden');
+      }, 1500);
+    }
   };
 
   const likeHandler = async (e) => {
@@ -55,6 +38,12 @@ export default function SockForm({ user }) {
       body: JSON.stringify(inputs),
     });
     // if (response.ok) { alert('Носок добавлен в избранное!'); }
+    if (response.ok) {
+      setInfo2('visible');
+      setTimeout(() => {
+        setInfo2('hidden');
+      }, 1500);
+    }
   };
 
   return (
@@ -176,8 +165,30 @@ export default function SockForm({ user }) {
             <>
               <button className="constructor-button" type="submit">В КОРЗИНУ</button>
               <button className="constructor-button" onClick={likeHandler}>ЛАЙК!</button>
+              <div style={{ visibility: `${info}` }} className="my-toast">ТОВАР ДОБАВЛЕН В КОРЗИНУ</div>
+              <div style={{ visibility: `${info2}` }} className="my-toast2">ТОВАР ТЕПЕРЬ В ИЗБРАННОМ</div>
             </>
-          ) : (<div className="mt-4">ДЛЯ ДОБАВЛЕНИЯ В КОРЗИНУ НЕОБХОДИМО ЗАРЕГИСТРИРОВАТЬСЯ</div>)}
+          ) : (
+            <div
+              style={{
+                marginLeft: '33px',
+                fontFamily: 'Roboto',
+                fontWeight: '300',
+              }}
+              className="mt-4"
+            >
+              <a
+                style={{
+                  color: 'black',
+                  textDecoration: 'none',
+                }}
+                href="/auth/reg"
+              >
+                ДЛЯ ДОБАВЛЕНИЯ В КОРЗИНУ НЕОБХОДИМО ЗАРЕГИСТРИРОВАТЬСЯ
+
+              </a>
+            </div>
+          )}
 
       </form>
 
