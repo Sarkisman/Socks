@@ -30,6 +30,7 @@ export default function Registration() {
         width: 400, margin: 'auto', color: 'white', height: '100%',
       }}
     >
+      <div style={{ height: '50px' }} />
       <h1 className="is-size-2">Регистрация пользователя</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={submitHandler}>
@@ -38,7 +39,23 @@ export default function Registration() {
             Введите имя пользователя
           </label>
           <div className="control has-icons-left has-icons-right">
-            <input className="input is-medium" value={input.name} name="name" onChange={changeHandler} type="text" placeholder="Иван Иванов" />
+            <input
+              style={{
+                borderRadius: '50px',
+                backgroundColor: '#dedede',
+                width: '340px',
+                height: '45px',
+                fontSize: '15px',
+                textAlign: 'center',
+                verticalAlign: 'middle',
+              }}
+              className="input is-medium"
+              value={input.name}
+              name="name"
+              onChange={changeHandler}
+              type="text"
+              placeholder="Иван Иванов"
+            />
             <span className="icon is-left">
               <i className="rbc-icon github" />
             </span>
@@ -49,7 +66,23 @@ export default function Registration() {
             Введите почту пользователя
           </label>
           <div className="control has-icons-left has-icons-right">
-            <input className="input is-medium" value={input.email} name="email" onChange={changeHandler} type="text" placeholder="ivanov@mail.ru" />
+            <input
+              style={{
+                borderRadius: '50px',
+                backgroundColor: '#dedede',
+                width: '340px',
+                height: '45px',
+                fontSize: '15px',
+                textAlign: 'center',
+                verticalAlign: 'middle',
+              }}
+              className="input is-medium"
+              value={input.email}
+              name="email"
+              onChange={changeHandler}
+              type="text"
+              placeholder="ivanov@mail.ru"
+            />
             <span className="icon is-left">
               <i className="rbc-icon github" />
             </span>
@@ -60,14 +93,30 @@ export default function Registration() {
             Придумайте пароль
           </label>
           <div className="control has-icons-left">
-            <input className="input is-medium" value={input.password} name="password" onChange={changeHandler} type="password" placeholder="Пароль" />
+            <input
+              style={{
+                borderRadius: '50px',
+                backgroundColor: '#dedede',
+                width: '340px',
+                height: '45px',
+                fontSize: '15px',
+                textAlign: 'center',
+                verticalAlign: 'middle',
+              }}
+              className="input is-medium"
+              value={input.password}
+              name="password"
+              onChange={changeHandler}
+              type="password"
+              placeholder="Пароль"
+            />
             <span className="icon is-left">
               <i className="rbc-icon lock" />
             </span>
           </div>
         </div>
         <div className="buttons">
-          <button style={{ marginTop: '1rem' }} type="submit" className="is-success is-focused is-fullwidth button" tabIndex="0">Регистрация</button>
+          <button style={{ marginTop: '2rem' }} type="submit" className="constructor-button" tabIndex="0">Регистрация</button>
         </div>
       </form>
     </div>
