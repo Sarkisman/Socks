@@ -9,7 +9,7 @@ basket.get('/', (req, res) => {
     res.render('Layout', initState);
     Sock.destroy({ where: { userId: req.session.user.id, favorSt: false, bascetSt: false } });
   } catch (error) {
-    // log
+    //
   }
 });
 
